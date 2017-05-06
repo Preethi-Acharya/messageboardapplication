@@ -1,4 +1,6 @@
-<% @messages.each do |message| %>
-	<h3><%= message.message %></h3>
-	<%= link_to "View Message", message_path(message), class: 'btn btn-default' %>
-<% end %>
+<div class="col-md-8 col-md-offset-2">
+	<% @messages.each do |message| %>
+		<h3><%= message.message %></h3>
+		<%= link_to "View Message", message_path(message), class: 'btn btn-default' %>
+	<% end %>
+</div>

@@ -1,11 +1,15 @@
-<h1><%= @message.message %></h1>
-<p>Posted by <%= @message.user.email %> <%= time_ago_in_words(@message.created_at) %> ago</p>
-<p><%= @message.message_detail %></p>
+<div class="col-md-8 col-md-offset-2">
+	<h1><%= @message.message %></h1>
+	<p class="message-posted-by">Posted by <%= @message.user.username %> <%= time_ago_in_words(@message.created_at) %> ago</p>
+	<p><%= @message.message_detail %></p>
 
-<% if user_signed_in? %>
-	<% if @message.user_id == current_user.id %>
-		<%= link_to "Back", root_path %>
-		<%= link_to "Edit", edit_message_path(@message) %>
-		<%= link_to "Delete", message_path(@message), method: :delete, data: {confirm: "Are You Sure You Want To Delete?"} %>
+	<% if user_signed_in? %>
+		<% if @message.user_id == current_user.id %>
+			<div class="btn-group">
+				<%= link_to "Back", messages_path, class: 'btn btn-default' %>
+				<%= link_to "Edit", edit_message_path(@message), class: 'btn btn-default' %>
+				<%= link_to "Delete", message_path(@message), class: 'btn btn-default', method: :delete, data: {confirm: "Are You Sure You Want To Delete?"} %>
+			</div>
+		<% end %>
 	<% end %>
-<% end %>
+</div>
