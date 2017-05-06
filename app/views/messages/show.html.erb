@@ -4,12 +4,12 @@
 	<p><%= @message.message_detail %></p>
 
 	<% if user_signed_in? %>
-		<% if @message.user_id == current_user.id %>
 			<div class="btn-group">
 				<%= link_to "Back", messages_path, class: 'btn btn-default' %>
-				<%= link_to "Edit", edit_message_path(@message), class: 'btn btn-default' %>
-				<%= link_to "Delete", message_path(@message), class: 'btn btn-default', method: :delete, data: {confirm: "Are You Sure You Want To Delete?"} %>
+				<% if @message.user_id == current_user.id %>
+					<%= link_to "Edit", edit_message_path(@message), class: 'btn btn-default' %>
+					<%= link_to "Delete", message_path(@message), class: 'btn btn-default', method: :delete, data: {confirm: "Are You Sure You Want To Delete?"} %>
+				<% end %>
 			</div>
-		<% end %>
 	<% end %>
 </div>
