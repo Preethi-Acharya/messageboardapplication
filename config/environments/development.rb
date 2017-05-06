@@ -30,17 +30,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
   
- 
-config.action_mailer.smtp_settings ={
- :enable_starttls_auto => true,
- :address            => 'smtp.gmail.com',
- :port               => 587,
- :tls                => true,
- :domain             => 'gmail.com',
- :authentication     => :plain,
- :user_name          => 'preeth.achar@gmail.com',
- :password           => 'f@j300228' 
- }
+  config.action_mailer.smtp_settings = {
+    user_name:      ENV['SENDMAIL_USERNAME'],
+    password:       ENV['SENDMAIL_PASSWORD'],
+    domain:         ENV['MAIL_HOST'],
+    address:       'smtp.gmail.com',
+    port:          '587',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
